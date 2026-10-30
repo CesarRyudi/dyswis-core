@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Host — usuário que cria e controla salas.
+/// Guests (espectadores) não têm conta; entram via link com nome.
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String? // opcional, pois logins via Google não possuem senha
+  googleId  String?  @unique // armazenará o ID do perfil do Google
+  name      String
+  createdAt  DateTime     @default(now())
+  rooms      Room[]
+  annotations Annotation[]
+  highlights  Highlight[]
+}
+
+/// Sala de aula virtual criada por um Host.
+/// O `id` (CUID) é usado nas URLs. O `inviteToken` controla o acesso.
+model Room {
+  id          String   @id @default(cuid())
+  name        String // nome amigável exibido na UI
+  inviteToken String   @unique // token de alta entropia para link de convite
+  shortCode   String?  @unique // código curto de acesso rápido
+  status      String   @default("INACTIVE") // ACTIVE, INACTIVE, ARCHIVED
+  password    String? // senha opcional para proteger o acesso
+  pdfPath     String? // caminho do PDF salvo no servidor (ex: "uploads/abc.pdf")
+  videoPath   String? // caminho do vídeo salvo no servidor (ex: "uploads/video.mp4")
+  description String? // conteúdo de texto (plain text / Markdown) sincronizado com scroll
+  state       Json? // estado síncrono da sala (desenhos, abas, pagina do PDF) para late joiners
+  hostId      String
+  host        User         @relation(fields: [hostId], references: [id])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  annotations Annotation[]
+  highlights  Highlight[]
+}
+
+/// Anotações pessoais (módulo de produtividade do aluno).
+model Annotation {
+  id           String   @id @default(cuid())
+  userId       String
+  roomId       String
+  
+  // Para anotações em Texto (TipTap)
+  blockId      String?  // `data-id` do parágrafo no TipTap
+  originalText String?  // Snapshot do texto original para histórico (Content Drift)
+  
+  // Para anotações em PDF
+  mediaId      String?  // ID/nome do arquivo PDF
+  pdfPage      Int?     // Número da página do PDF
+  pdfX         Float?   // Coordenada X percentual (0 a 100)
+  pdfY         Float?   // Coordenada Y percentual (0 a 100)
+  
+  content      String   // O conteúdo da anotação em si
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  @@index([roomId, userId])
+  @@index([mediaId])
+}
+
+/// Marcações/sublinhados coloridos do aluno no texto (TipTap).
+/// Cada highlight representa um range de caracteres dentro de um bloco.
+model Highlight {
+  id          String   @id @default(cuid())
+  userId      String
+  roomId      String
+  blockId     String   // data-id do bloco no TipTap
+  startOffset Int      // Offset de início dentro do bloco (caractere)
+  endOffset   Int      // Offset de fim dentro do bloco (caractere)
+  color       String   @default("#FFEB3B") // Cor da marcação (hex)
+  text        String?  // Snapshot do texto marcado
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  @@index([roomId, userId])
+}

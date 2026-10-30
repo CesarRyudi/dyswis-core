@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Room" ADD COLUMN IF NOT EXISTS "status" TEXT NOT NULL DEFAULT 'INACTIVE';
+ALTER TABLE "Room" ADD COLUMN IF NOT EXISTS "shortCode" TEXT;
+
+-- CreateIndex
+CREATE UNIQUE INDEX IF NOT EXISTS "Room_shortCode_key" ON "Room"("shortCode");

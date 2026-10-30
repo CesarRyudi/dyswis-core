@@ -1,0 +1,4 @@
+npx lint-staged
+npx nx run-many -t typecheck
+npx nx build api
+npx nx build web

@@ -1,0 +1,96 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 8 0 R 9 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Length 242 >>
+stream
+BT
+/F1 24 Tf
+72 750 Td
+(Dyswis - Demo PDF) Tj
+/F1 14 Tf
+0 -50 Td
+0 -30 Td
+(Esta eh uma plataforma de aprendizado colaborativo) Tj
+0 -30 Td
+(em tempo real. O host controla a navegacao e) Tj
+0 -30 Td
+(os viewers acompanham sincronizados.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 328 >>
+stream
+BT
+/F1 24 Tf
+72 750 Td
+(Funcionalidades) Tj
+/F1 14 Tf
+0 -50 Td
+(Pagina 2: Como funciona?) Tj
+0 -30 Td
+(- Host guia a navegacao do material) Tj
+0 -30 Td
+(- Viewers seguem em tempo real via WebSocket) Tj
+0 -30 Td
+(- Follow Mode: navegue livremente e volte ao Host) Tj
+0 -30 Td
+(- Call to Action: Host forca re-sincronizacao) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 290 >>
+stream
+BT
+/F1 24 Tf
+72 750 Td
+(Stack Tecnologica) Tj
+/F1 14 Tf
+0 -50 Td
+(Pagina 3: Tecnologias utilizadas) Tj
+0 -30 Td
+(Frontend: React + Material UI + Vite) Tj
+0 -30 Td
+(Backend: NestJS + Socket.io) Tj
+0 -30 Td
+(Monorepo: Nx Integrated Workspace) Tj
+0 -30 Td
+(PDF: react-pdf com pdfjs-dist) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000000224 00000 n 
+0000000517 00000 n 
+0000000896 00000 n 
+0000001237 00000 n 
+0000001363 00000 n 
+0000001489 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+1615
+%%EOF

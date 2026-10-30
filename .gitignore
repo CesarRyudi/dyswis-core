@@ -1,0 +1,92 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.nx/cache
+.nx/workspace-data
+.claude/worktrees
+.claude/settings.local.json
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+.env
+
+# Build caches & database files
+*.db
+*.tsbuildinfo
+
+# Patch & diff artifacts
+*.diff
+*.patch
+
+# Logs
+*.log
+
+# Uploads
+uploads/
+apps/api/uploads/
+
+# Review & automation scripts / dumps
+comment*.json
+comment*.txt
+comments.json
+pr_*.txt
+pr_*.md
+pr_comments*.json
+reply*.txt
+clean_diff.txt
+filtered_diff*.txt
+temp.json
+ag-stop-probe.json
+fix_conflicts.js
+post_*.sh
+post_*.ps1
+post_*.js
+
+# MCP configuration & local tooling credentials
+mcp.json
+.agents/mcp_config.json
+
+# Local agent orchestration & internal index
+DYSWIS_INDEX.md
+.agents/
+.context/
+docs/
+
+
